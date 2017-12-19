@@ -46,7 +46,7 @@ a{
    color:#212121;
 }
 .container{
-  width: 1349px;
+  width: 100%;
   margin:0 auto;
 }
 .content{
