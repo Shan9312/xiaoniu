@@ -25,6 +25,7 @@ body,html{
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+ 
 }
 body{
   position: relative;
@@ -40,6 +41,9 @@ html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acro
 }
 a:hover{
   color: #a4a9ad;
+}
+a{
+   color:#212121;
 }
 .container{
   width: 1349px;
