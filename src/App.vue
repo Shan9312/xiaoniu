@@ -38,6 +38,8 @@ html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acro
     vertical-align: baseline;
     list-style: none;
     text-decoration: none;
+    font-weight: 400;
+    font-style: normal;
 }
 a:hover{
   color: #a4a9ad;

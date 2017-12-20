@@ -1,5 +1,5 @@
 <template>
-  <div class="mains">
+  <div class="container mains">
      <my-header></my-header>
      <router-view></router-view>
      <my-footer></my-footer>

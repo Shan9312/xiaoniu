@@ -61,6 +61,7 @@ export default {
   }
   .section{
     min-width: 1170px;
+    margin:100px auto;
     margin:50px auto;
     ul{
       width: 100%;
