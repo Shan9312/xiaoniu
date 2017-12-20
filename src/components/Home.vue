@@ -1,16 +1,23 @@
 <template>
-  <div class="hello">
-    
+  <div class="mains">
+     <my-header></my-header>
+     <router-view></router-view>
+     <my-footer></my-footer>
   </div>
 </template>
 
 <script>
+import myHeader from './common/Header'
+import myFooter from './common/Footer'
 export default {
-  name: 'HelloWorld',
+  name: 'mains',
   data () {
     return {
-     
+      
     }
+  },
+  components:{
+    myHeader,myFooter
   }
 }
 </script>

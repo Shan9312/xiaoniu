@@ -61,7 +61,7 @@ export default {
   }
   .section{
     min-width: 1170px;
-    margin:0 auto;
+    margin:50px auto;
     ul{
       width: 100%;
       display: flex;
