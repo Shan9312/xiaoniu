@@ -66,4 +66,8 @@ a{
   content:"";
   clear: both;
 }
+.niu-font {
+    font-family: syNormal;
+    font-weight: normal;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="header content clear" :class='{"header-white":isShow}'>
+  <div class=" content clear" :class='{"header-white":isShow}'>
     <div class="header-logo left">
       <a href=""><img src="../../assets/img/logo_4ee5ab7b.png" alt=""></a>
     </div>
@@ -97,7 +97,6 @@
 
 <script>
   export default {
-    name: "header",
     data () {
       return {
         isShow: false
@@ -269,7 +268,6 @@
                     font-size: 16px;
                     height: 72px;
                     color: #a4a9ad;
-                  
                   }
                 }
               }
@@ -291,7 +289,7 @@
         float: left;
         a {
           padding: 16px 10px;
-          margin:0 20px;
+          margin: 0 20px;
         }
       }
       div.user-box,
@@ -325,11 +323,10 @@
             color: #df001f;
             border: solid 1px rgba(223, 0, 31, 0.2);
             &:hover {
-            border:1px solid #df001f;
-            color:#212121;
-           }
+              border: 1px solid #df001f;
+              color: #212121;
+            }
           }
-          
         }
         div.cart-collpase {
           height: 0px;

@@ -34,11 +34,14 @@
       </video>
     </div>
     <my-main-slide></my-main-slide>
+    <my-main-battery></my-main-battery>
+    
   </div>
 </template>
 
 <script>
-import myMainSlide from './common/MainSlide'
+import myMainSlide from './common/MainSlide2'
+import myMainBattery from './common/MainBattery'
 export default {
   name: "mains",
   data() {
@@ -52,7 +55,7 @@ export default {
     }
   },
   components:{
-    myMainSlide
+    myMainSlide,myMainBattery
   }
 };
 </script>
@@ -79,7 +82,7 @@ export default {
       padding-left: 14px;
       color: #fff;
       padding-bottom: 15px;
-      width: 250px;
+      width: 200px;
     }
     div.section-nav {
       text-align: center;
@@ -159,8 +162,6 @@ export default {
     }
     video {
       width: 100%;
-      // height: 637px;
-      margin-top: -145px;
     }
   }
 }
