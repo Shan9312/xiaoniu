@@ -76,7 +76,6 @@ export default {
     border-bottom: 1px solid #ccc;
     h2 {
       height: 100%;
-      line-height: 100%;
       font-weight: normal;
       font-size: 18px;
       padding-left: 14px;
