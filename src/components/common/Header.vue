@@ -1,30 +1,30 @@
 <template>
   <div class=" content clear" :class='{"header-white":isShow}'>
     <div class="header-logo left">
-      <a href=""><img src="../../assets/img/logo_4ee5ab7b.png" alt=""></a>
+      <router-link to="/first"><img src="../../assets/img/logo_4ee5ab7b.png" alt=""></router-link>
     </div>
     <nav class="header-nav left">
       <ul class="clear">
         <li class="li_car">
           <div class="header-car" @mouseover='isShow=true' @mouseleave='isShow=false'>
-            <a href="">小牛电动</a>
+            <router-link to="/">小牛电动</router-link>
             <div class="car-box">
               <ul class="clear">
                 <li>
                   <div>
-                    <a href=""><img src="../../assets/img/n1-header_d387c5e9.jpg" alt=""></a>
+                    <a href="#/"><img src="../../assets/img/n1-header_d387c5e9.jpg" alt=""></a>
                     <p>U1</p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <a href=""><img src="../../assets/img/m1-header_1139524b.jpg" alt=""></a>
+                    <a href="#/"><img src="../../assets/img/m1-header_1139524b.jpg" alt=""></a>
                     <p>MI</p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <a href=""><img src="../../assets/img/u1-header_d4ab9a16.jpg" alt=""></a>
+                    <a href="#/"><img src="../../assets/img/u1-header_d4ab9a16.jpg" alt=""></a>
                     <p>NIS</p>
                   </div>
                 </li>
@@ -33,14 +33,14 @@
           </div>
         </li>
         <li>
-          <a href="">商城</a>
+          <router-link to="/store">商城</router-link>
         </li>
         <li>
-          <a href="">线下门店</a>
+          <router-link to="/hall">线下门店</router-link>
         </li>
         <li class="li_server">
           <div class="header-server" @mouseover='isShow=true' @mouseleave='isShow=false'>
-            <a href="">服务</a>
+            <router-link to="/service">服务</router-link>
             <!-- 服务下列表 -->
             <div class="server-box">
               <ul class="clear server_ul">
@@ -70,7 +70,7 @@
           </div>
         </li>
         <li>
-          <a href="">社区</a>
+          <router-link to="/detail">社区</router-link>
         </li>
         <li>
           <a href=""><img src="../../assets/img/hundmilIcon2_3e23c8ba.png" alt=""></a>
@@ -79,14 +79,14 @@
     </nav>
     <div class="header-right left">
       <div class="user-box">
-        <a href="" @mouseover='isShow=true' @mouseleave='isShow=false'>登录图</a>
+        <a href="" @mouseover='isShow=true' @mouseleave='isShow=false'> <i class="icon iconfont icon-iconfontdenglufuzhi"></i></a>
         <div class="user-collpase collpase">
-          <a href="" class="login">登录</a>
-          <a href="" class="regin">注册</a>
+          <router-link  to="/login" class="login">登录</router-link>
+          <router-link  to="/register" class="regin">注册</router-link>
         </div>
       </div>
       <div class="cart-box" @mouseover='isShow=true' @mouseleave='isShow=false'>
-        <a href="">购物车</a>
+        <a href=""><i class="icon iconfont icon-gouwuche"></i></a>
         <div class="cart-collpase collpase">
           <span>你的购物车是空的</span>
         </div>
@@ -212,7 +212,7 @@
             position: relative;
             .server-box {
               position: absolute;
-              transition: all .5s linear;
+              transition: all .6s linear;
               background: #fff;
               width: 1170px;
               height: 0px;
@@ -263,11 +263,17 @@
                     background: url("../../assets/img/service-locate_9841d7c4.svg") no-repeat center;
                   }
                   div.details {
-                    margin-left: 10px;
                     text-align: left;
                     font-size: 16px;
                     height: 72px;
+                    margin-top:15px;
                     color: #a4a9ad;
+                    &:hover{
+                      color:#212121;
+                    }
+                    p{
+                      height: 32px;
+                    }
                   }
                 }
               }

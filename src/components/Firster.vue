@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <my-header></my-header>
     <my-first-slide></my-first-slide>
     <div class="section">
         <ul>
@@ -34,23 +33,20 @@
           </li>
         </ul>
     </div>
-    <my-footer></my-footer>
   </div>
 </template>
 
 <script>
-import myHeader from './common/Header'
 import myFirstSlide  from './common/FirstSlide'
-import myFooter from './common/Footer'
 export default {
-  name: 'HelloWorld',
+  name: 'Firster',
   data () {
     return {
      
     }
   },
   components:{
-    myHeader,myFirstSlide,myFooter
+    myFirstSlide
   }
 }
 </script>

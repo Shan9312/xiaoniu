@@ -11,13 +11,15 @@
         <a href="">了解电力系统</a>
       </div>
     </div>
-    <div class="bettery-middle">
+    <div class="bettery-middle" ref='countUp'>
       <ul>
         <li v-for="(item,index) in mylist" :key="index">
           <h3 class="par-tit ">{{item.txt}}</h3>
-          <h2 class="par-num ">
-            <b style="font-size: 28px; position: absolute; left: 260px; top: -22px;">*</b>
-            <span class=" niu-num-font J_rockNum">{{item.nub}}</span>
+          <h2 class="par-num">
+            <b style="font-size: 25px; position: absolute; left: 250px; top: -22px;">*</b>
+            <!-- <span class=" niu-num-font J_rockNum">{{item.nub}}</span> -->
+            <i-count-up :start="0" :end="item.nub" style="font-size: 75px"
+                        :options="options" :duration='3'></i-count-up>
           </h2>
           <p class="par-unit">{{item.wgh}}</p>
         </li>
@@ -32,7 +34,7 @@
         </p>
         <a href="">了解车身工艺</a>
       </div>
-      <video class="j_fullVideo content" autoplay loop>
+      <video class="j_fullVideo content">
         <source src="../../assets/img/s-1.mp4">
       </video>
       <p class="txt">*全新M1上线，产品实物可能与部分宣传视频或图片有细微差别，请以实物为准。</p>
@@ -79,16 +81,18 @@
   </div>
 </template>
 <script>
+  import ICountUp from 'vue-countup-v2';
   export default {
     data: function () {
       return {
+        clientHeight: window.document.body.offsetHeight,
         ImgItem: 0,
         isCurrents:-1,
         ImgCircle: ["#d4d4d4", "#74767a", "#da0e18", "#3a81c0"],
         mylist: [
-          { txt: "重量轻至", nub: 8.2, wgh: "KG" },
-          { txt: "续航远志", nub: 120, wgh: "KM" },
-          { txt: "充电至快", nub: "3.0", wgh: "HOURS" }
+          { txt: "重量轻至", nub:8.2, wgh: "KG" },
+          { txt: "续航远志", nub:120, wgh: "KM" },
+          { txt: "充电至快", nub:3.0, wgh: "HOURS" }
         ],
         myImg: [
           require('../../assets/img/s-43_9ef71a28.jpg'),
@@ -96,6 +100,14 @@
           require('../../assets/img/s-45_2ab7e2a3.jpg'),
           require('../../assets/img/s-47_0a65871d.jpg'),
         ],
+        options: {
+          useEasing: true,
+          useGrouping: true,
+          separator: ',',
+          decimal: '.',
+          prefix: '',
+          suffix: ''
+        }
       };
     },
     methods: {
@@ -103,6 +115,21 @@
           this.ImgItem=index;
           this.isCurrents=index;
         }
+    },
+    components:{
+      ICountUp
+    },
+    beforeCreate () {},
+    mounted(){
+      let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; //浏览器高度
+      let topH = this.$refs.countUp.offsetHeight;
+      console.log(topH);
+      console.log(h);
+      this.$nextTick(() => {
+        window.addEventListener('scroll',function () {
+            console.log('scroll')
+        },false);
+      })
     }
   };
 </script>
@@ -166,8 +193,8 @@
             b {
               font-size: 20px;
             }
-            span {
-              font-size: 75px;
+            .iCountUp{
+              color: #df001f;
             }
           }
           p {
@@ -328,7 +355,7 @@
       .circleList {
         position: absolute;
         width: 288px;
-        height: 55px;
+        height: 56px;
         background: #a3a3a3;
         left: 50%;
         transform: translateX(-50%);
@@ -337,7 +364,7 @@
         z-index: 10;
         li {
           margin-right: 20px;
-          margin-top: 12px;
+          margin-top:12px;
           width: 32px;
           height: 32px;
           border-radius: 50%;
@@ -349,9 +376,9 @@
           }
         }
         .currents{
-          cursor: default;
           width: 38px;
           height: 38px;
+          margin-top:9px;
         }
       }
     }
