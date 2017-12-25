@@ -94,6 +94,7 @@ export default {
 <style scoped lang="less">
 .floors {
   background-color: #f5f5f5;
+  padding-bottom: 150px;
   .floor {
     padding: 15px 0px;
     div.sale-header {
@@ -146,7 +147,7 @@ export default {
           color: #df001f;
         }
       &:hover{
-        box-shadow: 10px 10px 30px #212121;
+          box-shadow: 0 20px 40px -10px rgba(0,0,0,.2);;
       }
       }
     }

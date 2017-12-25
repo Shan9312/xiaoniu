@@ -11,19 +11,21 @@
         <a href="">了解电力系统</a>
       </div>
     </div>
-    <div class="bettery-middle">
+    <div class="bettery-middle" >
       <ul>
         <li v-for="(item,index) in mylist" :key="index">
           <h3 class="par-tit ">{{item.txt}}</h3>
-          <h2 class="par-num ">
-            <b style="font-size: 28px; position: absolute; left: 260px; top: -22px;">*</b>
-            <span class=" niu-num-font J_rockNum">{{item.nub}}</span>
+          <h2 class="par-num">
+            <b style="font-size: 25px; position: absolute; left: 250px; top: -22px;">*</b>
+            <!-- <span class=" niu-num-font J_rockNum">{{item.nub}}</span> -->
+            <i-count-up :start="0" :end="item.nub" style="font-size: 75px"
+                        :options="options" :duration='3'></i-count-up>
           </h2>
           <p class="par-unit">{{item.wgh}}</p>
         </li>
       </ul>
     </div>
-    <div class="bettery-video">
+    <div class="bettery-video" ref='countUp'>
       <div>
         <h2>工艺精湛，细致入微</h2>
         <p>
@@ -32,7 +34,7 @@
         </p>
         <a href="">了解车身工艺</a>
       </div>
-      <video class="j_fullVideo content" autoplay loop>
+      <video class="j_fullVideo content " autoplay="isTrue">
         <source src="../../assets/img/s-1.mp4">
       </video>
       <p class="txt">*全新M1上线，产品实物可能与部分宣传视频或图片有细微差别，请以实物为准。</p>
@@ -79,16 +81,19 @@
   </div>
 </template>
 <script>
+  import ICountUp from 'vue-countup-v2';
   export default {
     data: function () {
       return {
+        clientHeight: window.document.body.offsetHeight,
         ImgItem: 0,
         isCurrents:-1,
+        isTrue:false,
         ImgCircle: ["#d4d4d4", "#74767a", "#da0e18", "#3a81c0"],
         mylist: [
-          { txt: "重量轻至", nub: 8.2, wgh: "KG" },
-          { txt: "续航远志", nub: 120, wgh: "KM" },
-          { txt: "充电至快", nub: "3.0", wgh: "HOURS" }
+          { txt: "重量轻至", nub:8.2, wgh: "KG" },
+          { txt: "续航远志", nub:120, wgh: "KM" },
+          { txt: "充电至快", nub:3.0, wgh: "HOURS" }
         ],
         myImg: [
           require('../../assets/img/s-43_9ef71a28.jpg'),
@@ -96,15 +101,36 @@
           require('../../assets/img/s-45_2ab7e2a3.jpg'),
           require('../../assets/img/s-47_0a65871d.jpg'),
         ],
+        options: {
+          useEasing: true,
+          useGrouping: true,
+          separator: ',',
+          decimal: '.',
+          prefix: '',
+          suffix: ''
+        }
       };
     },
     methods: {
         handleColor:function(index){
           this.ImgItem=index;
           this.isCurrents=index;
-        }
+        },
+    },
+    components:{
+      ICountUp
+    },
+    beforeCreate () {},
+    mounted(){
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollHeight = this.$refs.countUp.offsetHeight;//820
+        let windowHeight =window.screen.height; //1080     
+          
+        window.addEventListener('scroll', ()=> {
+           console.log( scrollTop);  
+        },true)
     }
-  };
+  }
 </script>
 <style scoped lang="less">
   .bettery {
@@ -166,8 +192,8 @@
             b {
               font-size: 20px;
             }
-            span {
-              font-size: 75px;
+            .iCountUp{
+              color: #df001f;
             }
           }
           p {
@@ -177,12 +203,12 @@
       }
     }
     .bettery-video {
-      height: 700px;
+      height: 800px;
       padding-top: 20px;
       background: #fff;
       position: relative;
       div {
-        padding-top: 450px;
+        padding-top: 560px;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
@@ -207,7 +233,8 @@
       }
       video {
         width: 100%;
-        height: 600px;
+        height: 800px;   
+
       }
       p.txt {
         font-size: 12px;
@@ -328,7 +355,7 @@
       .circleList {
         position: absolute;
         width: 288px;
-        height: 55px;
+        height: 56px;
         background: #a3a3a3;
         left: 50%;
         transform: translateX(-50%);
@@ -337,7 +364,7 @@
         z-index: 10;
         li {
           margin-right: 20px;
-          margin-top: 12px;
+          margin-top:12px;
           width: 32px;
           height: 32px;
           border-radius: 50%;
@@ -349,9 +376,9 @@
           }
         }
         .currents{
-          cursor: default;
           width: 38px;
           height: 38px;
+          margin-top:9px;
         }
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="section container">
-    <div class="section-title content">
+    <div class="section-title content " :class="{sectionTitleBg:isShowBg}">
         <h2 class="left">M1</h2>
         <div class="right section-nav">
           <a href="">概述</a>
@@ -46,14 +46,26 @@ export default {
   name: "mains",
   data() {
     return {
-      clientHeight: window.document.body.offsetHeight
+      isShowBg:false,
+      clientHeight: window.document.body.offsetHeight,
+      scrollTop:window.scroll.scrollTop,
     };
   },
   mounted() {
     if (this.clientHeight > 768) {
       this.clientHeight = 768;
     }
+    this.$nextTick(() => {
+      window.addEventListener('scroll',function () {
+          console.log('scroll')
+      },false);
+    })
+    console.log(this.scrollTop);
+    if(this.scrollTop>500){
+      this.isShowBg=true;
+    }
   },
+
   components:{
     myMainSlide,myMainBattery
   }
@@ -63,6 +75,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang='less'>
 .section {
+  .sectionTitleBg{
+     background:rgba(247,247,247,0.7) !important;
+  }
   .section-title {
     position: absolute;
     height: 40px;
@@ -71,6 +86,7 @@ export default {
     color: #fff;
     top: 90px;
     left: 50%;
+    border-radius:4px;
     transform: translatex(-50%);
     z-index: 5;
     border-bottom: 1px solid #ccc;
@@ -101,6 +117,7 @@ export default {
       }
     }
   }
+  
   .section-header {
     position: relative;
     text-align: center;

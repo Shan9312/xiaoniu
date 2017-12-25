@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-   
     <router-view/>
   </div>
 </template>
@@ -25,6 +24,7 @@ body,html{
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  zoom:1;
  
 }
 body{
