@@ -12,20 +12,26 @@
       </div>
     </div>
     <div class="bettery-middle" >
-      <ul>
+      <ul ref='countUpWrap'>
         <li v-for="(item,index) in mylist" :key="index">
           <h3 class="par-tit ">{{item.txt}}</h3>
           <h2 class="par-num">
             <b style="font-size: 25px; position: absolute; left: 250px; top: -22px;">*</b>
-            <!-- <span class=" niu-num-font J_rockNum">{{item.nub}}</span> -->
-            <i-count-up :start="0" :end="item.nub" style="font-size: 75px"
-                        :options="options" :duration='3'></i-count-up>
+            <i-count-up 
+              :start="0" 
+              :end="item.nub" 
+              style="font-size: 75px"
+              :options="options"
+              :duration='3' 
+              ref='countUp'
+              >
+            </i-count-up>
           </h2>
           <p class="par-unit">{{item.wgh}}</p>
         </li>
       </ul>
     </div>
-    <div class="bettery-video" ref='countUp'>
+    <div class="bettery-video">
       <div>
         <h2>工艺精湛，细致入微</h2>
         <p>
@@ -81,7 +87,7 @@
   </div>
 </template>
 <script>
-  import ICountUp from 'vue-countup-v2';
+  import ICountUp from '../common/CountUp.vue';
   export default {
     data: function () {
       return {
@@ -122,12 +128,23 @@
     },
     beforeCreate () {},
     mounted(){
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        let scrollHeight = this.$refs.countUp.offsetHeight;//820
-        let windowHeight =window.screen.height; //1080     
-          
         window.addEventListener('scroll', ()=> {
-           console.log( scrollTop);  
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollHeight = this.$refs.countUpWrap.offsetTop;//820
+        let windowHeight =window.screen.height; //1080 
+           if (scrollTop>windowHeight*0.5) {
+             this.$emit('fixedHead', true)
+           } else {
+             this.$emit('fixedHead', false)
+           }
+           if ((scrollHeight-scrollTop-windowHeight*0.5) < 0) {
+             this.$refs.countUp[0].instance.reset()
+             this.$refs.countUp[1].instance.reset()
+             this.$refs.countUp[2].instance.reset()
+             this.$refs.countUp[0].instance.start()
+             this.$refs.countUp[1].instance.start()
+             this.$refs.countUp[2].instance.start()
+           }
         },true)
     }
   }

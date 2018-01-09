@@ -1,6 +1,6 @@
 <template>
   <div class="section container">
-    <div class="section-title content " :class="{sectionTitleBg:isShowBg}">
+    <div class="section-title content" :class="{sectionTitleBg:isShowBg,fixed:fixedHeader}">
         <h2 class="left">M1</h2>
         <div class="right section-nav">
           <a href="">概述</a>
@@ -34,7 +34,7 @@
       </video>
     </div>
     <my-main-slide></my-main-slide>
-    <my-main-battery></my-main-battery>
+    <my-main-battery @fixedHead='v => {fixedHeader = v}'></my-main-battery>
     
   </div>
 </template>
@@ -49,6 +49,7 @@ export default {
       isShowBg:false,
       clientHeight: window.document.body.offsetHeight,
       scrollTop:window.scroll.scrollTop,
+      fixedHeader: false
     };
   },
   mounted() {
@@ -65,7 +66,6 @@ export default {
       this.isShowBg=true;
     }
   },
-
   components:{
     myMainSlide,myMainBattery
   }
@@ -179,6 +179,11 @@ export default {
     video {
       width: 100%;
     }
+  }
+  .fixed{
+    position: fixed;
+    top:20px;
+    background:rgba(200,200,200,0.5)
   }
 }
 </style>
