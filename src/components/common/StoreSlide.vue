@@ -1,6 +1,6 @@
 <template>
 	<div class="slide firstSlide">
-		<swiper :options="swiperOption" ref="mySwiper" >
+		<swiper :options="swiperOption" ref="mySwiper" style='height:100%'>
 			<swiper-slide v-for="(item,index) in myImgs" :key="index">
 				<a href="" :style='{background:"url("+item+")"}' ></a>
 			</swiper-slide>
@@ -43,7 +43,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .firstSlide {
   height: 500px;
   .swiper-slide {

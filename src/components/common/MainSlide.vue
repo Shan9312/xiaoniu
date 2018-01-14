@@ -50,7 +50,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   .firstSlide {
     height: 686px;
     .swiper-slide {

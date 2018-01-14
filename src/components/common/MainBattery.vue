@@ -129,9 +129,10 @@
     beforeCreate () {},
     mounted(){
         window.addEventListener('scroll', ()=> {
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        let scrollHeight = this.$refs.countUpWrap.offsetTop;//820
-        let windowHeight =window.screen.height; //1080 
+        this.$nextTick(() => {
+          let scrollTop = document.body.scrollTop;
+          let scrollHeight = this.$refs.countUpWrap.offsetTop;//820
+          let windowHeight =window.screen.height; //1080 
            if (scrollTop>windowHeight*0.5) {
              this.$emit('fixedHead', true)
            } else {
@@ -145,6 +146,7 @@
              this.$refs.countUp[1].instance.start()
              this.$refs.countUp[2].instance.start()
            }
+        })
         },true)
     }
   }

@@ -79,7 +79,7 @@
     </nav>
     <div class="header-right left">
       <div class="user-box">
-        <a href="" @mouseover='isShow=true' @mouseleave='isShow=false'> <i class="icon iconfont icon-iconfontdenglufuzhi"></i></a>
+        <router-link to="/register" @mouseover='isShow=true' @mouseleave='isShow=false'> <i class="icon iconfont icon-iconfontdenglufuzhi"></i></router-link>
         <div class="user-collpase collpase">
           <router-link  to="/login" class="login">登录</router-link>
           <router-link  to="/register" class="regin">注册</router-link>
